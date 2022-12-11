@@ -3,8 +3,6 @@ import { columns } from './columns';
 import { Input, Button } from 'antd';
 import { useState } from 'react';
 import { useTableContext } from './context/context';
-import EditModalForm from './components/EditModalForm';
-import AddModalForm from './components/AddModalForm';
 
 const Table = () => {
 	const { dataSource, setDataSource, setIsAdd, intialData } = useTableContext();

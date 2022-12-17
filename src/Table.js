@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { useTableContext } from './context/context';
 
 const Table = () => {
-	const { dataSource, setDataSource, setIsAdd, intialData } = useTableContext();
+	const { dataSource, setDataSource, setIsAdd, intialData, setTagModal } =
+		useTableContext();
 	const [keywords, setKeywords] = useState('');
 	const handleSearch = () => {
 		if (keywords.length === 0) return;
@@ -36,7 +37,6 @@ const Table = () => {
 		setKeywords('');
 	};
 	const reset = () => {
-		console.log(intialData);
 		setDataSource([...intialData]);
 	};
 	return (
@@ -60,6 +60,7 @@ const Table = () => {
 					placeholder="Search for any columns"
 					onSearch={handleSearch}
 				/>,
+				<Button onClick={() => setTagModal(true)}>add new tag</Button>,
 				<Button onClick={reset}>reset</Button>,
 			]}
 			pagination={{

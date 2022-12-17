@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { dataDummy, examapleData } from '../utils/data';
+import { examapleData } from '../utils/data';
 const Context = React.createContext();
 
 export const ContextProvider = ({ children }) => {
 	const [isEdit, setIsEdit] = useState(false);
 	const [isAdd, setIsAdd] = useState(false);
+	const [tagModal, setTagModal] = useState(false);
 	const [recordData, setRecordData] = useState(null);
 	const [dataSource, setDataSource] = useState(examapleData);
 	const [intialData, setIntialData] = useState(examapleData);
@@ -40,6 +41,8 @@ export const ContextProvider = ({ children }) => {
 				isAdd,
 				setIsAdd,
 				intialData,
+				tagModal,
+				setTagModal,
 			}}
 		>
 			{children}

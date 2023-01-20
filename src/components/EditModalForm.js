@@ -6,7 +6,6 @@ import { options, tag } from '../utils/data';
 
 const EditModalForm = () => {
   const { isEdit, setIsEdit, recordData, setDataSource } = useTableContext();
-  console.log(recordData);
   const [form] = Form.useForm();
 
   const disableDueDate = (value) => {
@@ -33,20 +32,25 @@ const EditModalForm = () => {
     });
     setIsEdit(false);
   };
+  const handleCancel = () => {
+    setIsEdit(false);
+  };
+
   return (
     <>
       <Modal
         title='Edit row'
         open={isEdit}
-        okText='save'
+        okText='Save'
         okButtonProps={{ type: 'primary' }}
-        cancelText='no'
-        onCancel={() => setIsEdit(false)}
+        cancelText='Discard'
+        onCancel={handleCancel}
         onOk={() => form.submit()}
       >
         <Form form={form} onFinish={onFinish}>
           <Form.Item
             name='title'
+            label='Title'
             rules={[
               {
                 required: true,
@@ -65,6 +69,7 @@ const EditModalForm = () => {
           </Form.Item>
           <Form.Item
             name='description'
+            label={'Description'}
             rules={[
               {
                 required: true,
@@ -82,7 +87,7 @@ const EditModalForm = () => {
           >
             <Input placeholder='Description' />
           </Form.Item>
-          <Form.Item name='dueDate'>
+          <Form.Item name='dueDate' label='DueDate'>
             <DatePicker
               picker='date'
               placeholder='enter date'
@@ -90,10 +95,18 @@ const EditModalForm = () => {
               defaultValue={moment(recordData?.dueDate)}
             />
           </Form.Item>
-          <Form.Item name={'tag'} initialValue={recordData?.tag}>
+          <Form.Item
+            name={'tag'}
+            initialValue={recordData?.tag}
+            label={'Label'}
+          >
             <Select mode='multiple' allowClear options={tag}></Select>
           </Form.Item>
-          <Form.Item name={'status'} initialValue={recordData?.status}>
+          <Form.Item
+            name={'status'}
+            initialValue={recordData?.status}
+            label={'Status'}
+          >
             <Select options={options}></Select>
           </Form.Item>
         </Form>

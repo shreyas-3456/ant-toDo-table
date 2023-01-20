@@ -40,7 +40,7 @@ const AddModalForm = () => {
       >
         <Form form={form} onFinish={onFinish}>
           <Form.Item
-            label={'title'}
+            label={'Title'}
             name='title'
             rules={[
               {
@@ -58,7 +58,7 @@ const AddModalForm = () => {
             <Input placeholder='title' />
           </Form.Item>
           <Form.Item
-            label='description'
+            label='Description'
             name='description'
             rules={[
               {
@@ -76,14 +76,14 @@ const AddModalForm = () => {
           >
             <Input placeholder='Description' />
           </Form.Item>
-          <Form.Item name='dueDate'>
+          <Form.Item name='dueDate' label={'DueDate'}>
             <DatePicker
               picker='date'
               placeholder='enter date'
               disabledDate={disableDueDate}
             />
           </Form.Item>
-          <Form.Item name={'tag'} label='tag'>
+          <Form.Item name={'tag'} label='Tag'>
             <Select mode='multiple' allowClear options={tag}></Select>
           </Form.Item>
           <Form.Item name={'status'} label='status'>
